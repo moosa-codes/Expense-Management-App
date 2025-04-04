@@ -1,0 +1,17 @@
+Example
+
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_cHJpbWUtcGVyY2gtMC5jbGVyay5hY2NvdW50cy5kZXYk
+  CLERK_SECRET_KEY=sk_test_gubmGM451XgfxOPmGnJLuy9mxjizY0kgIe67QEAk9J
+  NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+  NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+  NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+  NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+  
+  NEXT_PUBLIC_DATABASE_URL=postgresql://expense-db_owner:d9jBp1JXLbgG@ep-damp-flower-a5uypc1v.us-east-2.aws.neon.tech/expense-db?sslmode=require
+
+
+npx drizzle-kit studio 
+npm run dev
+
+
+.env.local ==>PA
