@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { UserButton, useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Header() {
     const { isSignedIn } = useUser();
@@ -16,12 +17,15 @@ export default function Header() {
 
     return (
         <div className='p-5 flex justify-between items-center border shadow-sm'>
-            <Image
-                src={'/logo.svg'}
-                alt={'Expenese Tracker'}
-                height={150}
-                width={150}
-            />
+            <Link href={'/'}>
+                <Image
+                    src={'/logo.png'}
+                    alt={'Expenese Tracker'}
+                    height={50}
+                    width={50}
+                    className='rounded-full cursor-pointer'
+                />
+            </Link>
             <div className='w-[150px] flex justify-between items-center'>
                 {isSignedIn &&
                     <Button
