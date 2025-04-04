@@ -26,36 +26,35 @@ import { useRouter } from 'next/navigation';
 import EditBudgetComp from '../_components/EditBudgetComp';
 
 
-// budget type
-interface Budget {
-    id: string | number;
-    name: string;
-    amount: number;
-    emoji: string;
-    totalSpend: number;
-    totalItems: number;
-}
+// interface Budget {
+//     id: string | number;
+//     name: string;
+//     amount: number;
+//     emoji: string;
+//     totalSpend: number;
+//     totalItems: number;
+// }
 
-interface PrpType {
-    params: {
-        id: string;
-    };
-}
+// interface PrpType {
+//     params: {
+//         id: string;
+//     };
+// }
 
-// Expense Type
-interface Expense {
-    id: number;
-    name: string;
-    amount: string;
-    budgetId: number | null;
-    createdAt: string;
-}
+// interface Expense {
+//     id: number;
+//     name: string;
+//     amount: string;
+//     budgetId: number | null;
+//     createdAt: string;
+// }
 
 
-function DisplayExpenses({ params }: PrpType) {
+function DisplayExpenses({ params }) {
+
     const { user } = useUser(); // Clerk user context
-    const [budgetInfo, setBudgetInfo] = useState<Budget | null>(null);
-    const [expensesList, setExpensesList] = useState<Expense[]>([]);
+    const [budgetInfo, setBudgetInfo] = useState(null);
+    const [expensesList, setExpensesList] = useState([]);
 
     const route = useRouter();
 
@@ -86,7 +85,7 @@ function DisplayExpenses({ params }: PrpType) {
                     )
                     .groupBy(Budgets.id);
 
-                const transformedBudget = result.map((budget): Budget => ({
+                const transformedBudget = result.map((budget) => ({
                     id: budget.id,
                     name: budget.name,
                     amount: Number(budget.amount),
