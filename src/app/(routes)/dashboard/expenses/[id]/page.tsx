@@ -36,11 +36,11 @@ interface Budget {
     totalItems: number;
 }
 
-// interface Props {
-//     params: {
-//         id: string;
-//     };
-// }
+interface PrpType {
+    params: {
+        id: string;
+    };
+}
 
 // Expense Type
 interface Expense {
@@ -52,11 +52,7 @@ interface Expense {
 }
 
 
-function DisplayExpenses({ params }: {
-    params: {
-        id: string;
-    };
-}) {
+function DisplayExpenses({ params }: PrpType) {
     const { user } = useUser(); // Clerk user context
     const [budgetInfo, setBudgetInfo] = useState<Budget | null>(null);
     const [expensesList, setExpensesList] = useState<Expense[]>([]);

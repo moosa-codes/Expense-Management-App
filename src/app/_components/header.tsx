@@ -17,7 +17,7 @@ export default function Header() {
     return (
         <div className='p-5 flex justify-between items-center border shadow-sm'>
             <Image
-                src={'./logo.svg'}
+                src={'/logo.svg'}
                 alt={'Expenese Tracker'}
                 height={150}
                 width={150}
