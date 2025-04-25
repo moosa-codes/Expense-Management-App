@@ -10,7 +10,10 @@ import BarChartDashBoard from "./_components/BarChartDashBoard";
 import BudgetItem from "./budgets/_components/budgetItem";
 import ExpenseListTable from "./expenses/_components/ExpenseListTable";
 import Footer from "@/app/_components/Footer";
+import { Button } from '@/components/ui/button';
 import moment from "moment";
+import { NotebookPen, PenBox, Trash } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface Budget {
     id: string | number;
@@ -32,6 +35,7 @@ export default function Dashboard() {
     const { user } = useUser(); //user context
     const [budgets, setBudgets] = useState<Budget[]>([]);
     const [expensesList, setExpensesList] = useState<Expense[]>([]);
+    const route = useRouter();
 
     useEffect(() => {
         if (user) {
@@ -93,25 +97,66 @@ export default function Dashboard() {
     }
 
     return (
-        <div className="mr-10 p-5">
-            <h1 className="font-bold text-3xl">Hey! {user?.fullName} 👋</h1>
-            <p>Let&apos;s look up your money!</p>
-            <CardInfo budgetList={budgets} /> {/* CardInfo */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                <div className="col-span-2">
-                    <BarChartDashBoard budgets={budgets} /> {/* BarChart */}
-                    <ExpenseListTable
-                        expensesList={expensesList}
-                        refreshData={() => fetchBudgets()}
-                    />
+        <div className="p-6 md:p-8 space-y-8 ml-4">
+
+            <div className="space-y-2">
+                <h1 className="font-bold text-3xl md:text-4xl text-gray-800">
+                    Hey! {user?.fullName} 👋
+                </h1>
+                <p className="text-gray-600 text-lg">Let's track your finances today!</p>
+            </div>
+
+            <div className="space-y-6">
+                <CardInfo budgetList={budgets} />
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+                <div className="lg:col-span-3 space-y-6">
+
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h2 className="font-semibold text-xl text-gray-800 mb-4">Spending Overview</h2>
+                        <BarChartDashBoard budgets={budgets} />
+                    </div>
+
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h2 className="font-semibold text-xl text-gray-800 mb-4">Recent Expenses</h2>
+                        <ExpenseListTable
+                            expensesList={expensesList}
+                            refreshData={() => fetchBudgets()}
+                        />
+                    </div>
                 </div>
-                <div >
-                    <h2 className="font-bold text-lg mt-5">Latest Budgets</h2>
-                    {budgets.map((item, index) => (
-                        <BudgetItem budget={item} key={index} />
-                    ))}
+                <div className="lg:col-span-1 space-y-6">
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 sticky top-6">
+                        <h2 className="font-semibold text-xl text-gray-800 mb-4">Latest Budgets</h2>
+                        <div className="space-y-4">
+                            {budgets.map((item, index) => (
+                                <BudgetItem budget={item} key={index} />
+                            ))}
+
+                            <div className="flex flex-col gap-3">
+                                <button
+                                    onClick={() => route.push('/dashboard/budgets')}
+                                    className="flex items-center justify-center gap-2 px-4 py-2 w-full rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors duration-200 font-medium"
+                                >
+                                    <NotebookPen className="h-4 w-4" />
+                                    Add Expense
+                                </button>
+
+                                <button
+                                    onClick={() => route.push(`/dashboard/expenses/}`)}
+                                    className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-200 font-medium lg:w-[100px]"
+                                >
+                                    <PenBox />
+                                    Create Budget
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <Footer />
         </div>
     );

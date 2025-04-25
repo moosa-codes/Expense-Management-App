@@ -35,19 +35,19 @@ function ExpenseListTable({ expensesList, refreshData }: ExpenseListTableProps) 
 
     return (
         <div className="mt-3 border rounded-lg bg-slate-50 mb-11">
-            <h2 className="font-bold text-lg text-center bg-slate-100 border-b">Latest Expenses</h2>
-            <div className="grid grid-cols-4 bg-slate-200 p-2">
+            <h2 className="font-bold text-[15px] text-center bg-slate-100 border-b">Latest Expenses</h2>
+            <div className="grid grid-cols-4 bg-slate-200 p-2 text-sm">
                 <h2 className="font-bold">Name</h2>
                 <h2 className="font-bold">Amount</h2>
-                <h2 className="font-bold">Date</h2>
+                <h2 className="font-bold ml-2">Date</h2>
                 <h2 className="font-bold">Remove</h2>
             </div>
             {expensesList.map((expense, index) => (
-                <div className="grid grid-cols-4 bg-slate-50 p-2" key={index}>
+                <div className="grid grid-cols-4 bg-slate-50 p-2 text-sm" key={index}>
                     <h2>{expense.name}</h2>
                     <h2>${expense.amount}</h2>
                     <h2>{expense.createdAt}</h2>
-                    <h2>
+                    <h2 className="ml-6">
                         <Trash
                             className="text-red-500 cursor-pointer"
                             onClick={() => deleteExpense(expense)}

@@ -149,7 +149,7 @@ function DisplayExpenses({ params }) {
         <div className="p-10 rounded-lg">
             <div className='flex justify-between mt-[50px] items-center'>
                 <h2 className="text-2xl font-bold flex justify-between">My Expenses</h2>
-                <div className='flex gap-2 items-center'>
+                <div className='sm:flex-col justify-center items-center'>
                     <EditBudgetComp
                         budgetInfo={budgetInfo}
                         refreshData={() => fetchBudgetInfo()}
@@ -157,7 +157,7 @@ function DisplayExpenses({ params }) {
                     <AlertDialog>
                         <AlertDialogTrigger asChild>
                             <Button
-                                className='flex gap-2'
+                                className='flex gap-2 w-[130px] mt-4'
                                 variant={'destructive'}>
                                 Delete Budget<Trash />
                             </Button>

@@ -20,17 +20,17 @@ function BudgetItem({ budget }: BudgetItemProps) {
 
     return (
         <Link href={`/dashboard/expenses/${budget.id}`}>
-            <div className="p-5 border rounded-lg gap-2 hover:shadow-md cursor-pointer h-[160px] mt-6">
+            <div className="p-5 border rounded-lg hover:shadow-md cursor-pointer h-[200px] mt-6">
                 <div className='flex gap-2 items-center justify-between'>
                     <div className='flex gap-2 items-center'>
                         <h1 className='text-3xl p-2 bg-gray-300 rounded-full'>{budget.emoji}</h1>
                         <div>
-                            <h2>{budget.name}</h2>
+                            <h2 className="text-[14px]">{budget.name}</h2>
                             <h2 className='text-sm text-gray-400'>{budget.totalItems} Item</h2>
                         </div>
                     </div>
-                    <h2 className='text-primary font-bold'>${budget.amount} </h2>
                 </div>
+                <h2 className='text-primary font-bold'>${budget.amount}</h2>
 
                 <div className='mt-5'>
                     <div className='flex items-center justify-between mb-2'>
