@@ -1,12 +1,15 @@
 'use client'
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { LayoutGrid, ReceiptText, ShieldCheck, Wallet} from 'lucide-react'
+import { LayoutGrid, ReceiptText, ShieldCheck, Wallet } from 'lucide-react'
 import { UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
+
 
 export default function Sidebar() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
     const menuList = [
         {
@@ -64,7 +67,7 @@ export default function Sidebar() {
                             onClick={() => setIsOpen(false)}
                         >
                             <div className={`flex gap-3 items-center p-3 rounded-lg transition-colors
-                                ${location.pathname === menu.path ?
+                                ${pathname === menu.path ?
                                     'bg-purple-600 text-white' :
                                     'text-purple-700 hover:bg-purple-100'}`}
                             >
@@ -95,7 +98,7 @@ export default function Sidebar() {
                             key={menu.id}
                             href={menu.path}
                             className={`flex flex-col items-center p-1 rounded-lg transition-colors
-                                ${location.pathname === menu.path ?
+                                ${pathname === menu.path ?
                                     'text-purple-600' :
                                     'text-purple-400 hover:text-purple-600'}`}
                         >
