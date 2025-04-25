@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { LayoutGrid, ReceiptText, ShieldCheck, Wallet, Menu, X } from 'lucide-react'
+import { LayoutGrid, ReceiptText, ShieldCheck, Wallet} from 'lucide-react'
 import { UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
 

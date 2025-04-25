@@ -10,9 +10,8 @@ import BarChartDashBoard from "./_components/BarChartDashBoard";
 import BudgetItem from "./budgets/_components/budgetItem";
 import ExpenseListTable from "./expenses/_components/ExpenseListTable";
 import Footer from "@/app/_components/Footer";
-import { Button } from '@/components/ui/button';
 import moment from "moment";
-import { NotebookPen, PenBox, Trash } from "lucide-react";
+import { NotebookPen, PenBox } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface Budget {
@@ -103,7 +102,7 @@ export default function Dashboard() {
                 <h1 className="font-bold text-3xl md:text-4xl text-gray-800">
                     Hey! {user?.fullName} 👋
                 </h1>
-                <p className="text-gray-600 text-lg">Let's track your finances today!</p>
+                <p className="text-gray-600 text-lg">Let&aposs track your finances today!</p>
             </div>
 
             <div className="space-y-6">
